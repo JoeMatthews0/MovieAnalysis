@@ -38,3 +38,40 @@ head(movies)
 ```
 
 The dataset contains `r nrow(movies)` films and `r ncol(movies)` variables. For each film we have its `title`, the year it was released (`release_year`), its average viewer `rating` (out of 100), its `budget` and `revenue` (in millions of US dollars), whether it is in English (`EnglishLang`), and six `TRUE`/`FALSE` columns recording whether it belongs to each of the genres Action, Comedy, Drama, Family, Horror and SciFi.
+
+## Preprocessing
+
+Before analysing the data we need to clean it. Some films in the dataset
+have a rating of 0, which suggests that they were never rated, and some
+have a budget or revenue of less than one million dollars, which are
+unlikely to be reliable. These would distort our results, so we remove
+them using `filter()`. We also use `mutate()` to create two new
+variables: the `profit` of each film (its revenue minus its budget), and
+the `decade` in which it was released.
+
+```{r}
+movies_clean <- movies |>
+  filter(rating > 0, budget >= 1, revenue >= 1) |>
+  mutate(
+    profit = revenue - budget,
+    decade = floor(release_year / 10) * 10
+  )
+```
+
+This removed `r nrow(movies) - nrow(movies_clean)` films, leaving us
+with `r nrow(movies_clean)` films to analyse. As a check that our new
+variables make sense, here are the five most profitable films in the
+dataset:
+
+```{r}
+movies_clean |>
+  slice_max(profit, n = 5) |>
+  select(title, release_year, budget, revenue, profit) |>
+  knitr::kable()
+```
+
+Avatar and Avengers: Endgame are certainly plausible entries. Notice,
+though, that *Titanic* appears twice: the 1953 and 1997 films have
+exactly the same budget and revenue, which suggests the dataset has
+matched some remakes to the wrong film. This is a good reminder to
+always sanity-check your data, but for this report we will leave it as it is.
