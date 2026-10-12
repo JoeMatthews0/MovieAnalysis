@@ -75,22 +75,3 @@ though, that *Titanic* appears twice: the 1953 and 1997 films have
 exactly the same budget and revenue, which suggests the dataset has
 matched some remakes to the wrong film. This is a good reminder to
 always sanity-check your data, but for this report we will leave it as it is.
-
-## Visualisation
-
-### Movie ratings
-
-We begin by looking at how the ratings of the movies are distributed.
-
-```{r}
-ggplot(movies_clean, aes(x = rating)) +
-  geom_histogram(binwidth = 5, fill = "steelblue", colour = "white") +
-  labs(
-    title = "Distribution of movies ratings",
-    x = "Rating (out of 100)",
-    y = "Number of movies"
-  )
-```
-
-Most movies have a rating between 55 and 75, with a few more poorly
-rated movies forming a tail towards the lower end of the scale.
