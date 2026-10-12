@@ -1,0 +1,19 @@
+---
+title: "What Makes a Successful Film?"
+author: "Your Name"
+date: today
+format:
+  html:
+    embed-resources: true
+execution:
+  warning: false
+---
+
+## Introduction
+
+In this report we explore a dataset of movies taken from the International Movie Databse (IMDb). The goal of this analysis is to see if there is a relationship between movie budgets, revenues and ratings.
+
+The analysis has three parts:
+1. We first load and describe the data, 
+2. We preprocess the data
+3. We visualise it.
