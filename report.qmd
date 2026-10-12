@@ -11,9 +11,30 @@ execution:
 
 ## Introduction
 
-In this report we explore a dataset of movies taken from the International Movie Databse (IMDb). The goal of this analysis is to see if there is a relationship between movie budgets, revenues and ratings.
+In this report we explore a dataset of movies taken from the Internet Movie Database (IMDb). The goal of this analysis is to see if there is a relationship between movie budgets, revenues and ratings.
 
 The analysis has three parts:
-1. We first load and describe the data, 
-2. We preprocess the data
-3. We visualise it.
+
+1\. We first load and describe the data,
+
+2\. We preprocess the data
+
+3\. We visualise it.
+
+## The Data
+
+We use the `dplyr` package to manipulate the data and the `ggplot2` package to create plots.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+The data is stored in the file `CleanMovies.csv`, which we load into R as a data frame called `movies`.
+
+```{r}
+movies <- read.csv("CleanMovies.csv")
+head(movies)
+```
+
+The dataset contains `r nrow(movies)` films and `r ncol(movies)` variables. For each film we have its `title`, the year it was released (`release_year`), its average viewer `rating` (out of 100), its `budget` and `revenue` (in millions of US dollars), whether it is in English (`EnglishLang`), and six `TRUE`/`FALSE` columns recording whether it belongs to each of the genres Action, Comedy, Drama, Family, Horror and SciFi.
