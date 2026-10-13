@@ -119,3 +119,7 @@ movies_clean |>
 ```
 
 Family movies have the highest median profit, while dramas have the lowest.
+
+## Conclusion
+
+This report carried out an exploratory analysis of the IMDb movies dataset, of data on almost 10000 movies. We cleaned the data to remove entries with data quality issues (movies with 0 budget/revenue/rating) and then proceeded to visualise different aspects of the data. The distribution of ratings showed most movies having a rating between 55 and 75, with a longer left tail suggesting more very poor movies than very good ones. The median profit per genre investigation showed Family movies being by far the most profitable.
